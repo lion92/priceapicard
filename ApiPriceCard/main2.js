@@ -21,6 +21,7 @@ const Tesseract = require("tesseract.js");
 var app = express();
 var http=require('http').Server(app);
 app.use(express.static('./public/app/upload'))
+app.use(express.static('./public/app/excel'))
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 

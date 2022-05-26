@@ -10,5 +10,12 @@ module.exports = {
           res
       );
     })
+
+    app.post("/exceldl", function (req, res) {
+      todo.apiExcel(
+          req,
+          res
+      );
+    })
   }
 };

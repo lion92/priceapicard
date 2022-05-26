@@ -21,7 +21,14 @@
 
 <div id="image"></div>
 
-
+<div class="upload-container">
+    <form>
+        <label for="file">Upload File</label>
+        <input type="file" id="file" accept="image/*"/>
+    </form>
+    <button onclick="lancerExcel()">Lancer la recup des prix</button>
+    <a href="http://localhost:3000/test.xlsx">DL Excel</a>
+</div>
 <div class="grid">
 
     <div class="g-col-6"><input type="text" id="card"/></div>
@@ -88,15 +95,7 @@
 
 </style>
 </body>
-<body>
-<div class="upload-container">
-    <form>
-        <label for="file">Upload File</label>
-        <input type="file" id="file" accept="image/*"/>
-    </form>
-</div>
 
-</body>
 <script>
     document
         .getElementById('file')
@@ -123,8 +122,26 @@
         });
 
 </script>
+<script>
 
+function lancerExcel(){
+            fetch('http://localhost:3000/exceldl', {
+                method: 'POST',
 
+            })
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById("text").innerHTML = data?.message;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        };
 
 </script>
+
+
+
+
 
